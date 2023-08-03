@@ -18,13 +18,13 @@ jobs:
           TOKEN: ${{ secrets.TOKEN }}
         run: |
           mkdir ~/googleplay
-          echo "{\"AndroidID\": $ANDROID_ID}" > ~/googleplay/x86.json
+          echo "{\"AndroidID\": $ANDROID_ID}" > ~/googleplay/arm64-v8a.json
           echo "{\"Token\": \"$TOKEN\"}" > ~/googleplay/token.json
 
       - name: Check version
         run: |
           chmod +x ./googleplay
-          info=$(./googleplay -a com.cygames.Shadowverse -p 0)
+          info=$(./googleplay -a com.cygames.Shadowverse -p 2)
           echo "$info"
           version_string=$(echo "$info" | grep "VersionString")
           store_version=$(echo "$info" | grep "VersionCode")
