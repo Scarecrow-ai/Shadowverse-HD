@@ -64,7 +64,7 @@ jobs:
       - name: Decompile apk
         if: ${{ env.new_version == 'true' }}
         run: |
-          rm original.apk
+          rm  -f original.apk
           mv *.apk original.apk
           java -jar ./apktool_2.6.1.jar d original.apk
       
